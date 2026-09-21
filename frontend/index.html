@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sazón Express: pide hamburguesas, pizzas, asados, postres y bebidas a domicilio.">
+  <title>Sazón Express | Comida a domicilio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Sazón Express, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">🍽️</span>
+        <span class="brand__name">Sazón <em>Express</em></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="menu-principal" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="index.html" aria-current="page">Inicio</a></li>
+          <li><a href="index.html#menu">Menú</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="carrito.html">Carrito <span class="badge" aria-label="5 productos">5</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <h1 id="hero-titulo">Comida caliente en tu puerta, en menos de 45 minutos</h1>
+          <p class="hero__lead">
+            En Sazón Express preparamos cada pedido al momento: hamburguesas jugosas,
+            pizzas de horno, asados a la parrilla, postres y bebidas frías.
+            Elige, paga y espera en casa.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" href="#menu">Explorar el menú</a>
+            <a class="btn btn--outline btn--lg" href="#contacto">Contacto</a>
+          </div>
+          <ul class="hero__facts">
+            <li>🛵 Entrega a domicilio</li>
+            <li>🥬 Ingredientes frescos</li>
+            <li>💵 Pago contra entrega</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <img class="hero__img" src="assets/images/hamburguesa-doble-queso.svg" width="600" height="450" alt="Hamburguesa doble queso, uno de los platillos más pedidos">
+          <span class="hero__chip hero__chip--tiempo">🕒 35–45 min</span>
+          <span class="hero__chip hero__chip--envio">🛵 Envío Q15.00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENÚ -->
+    <section class="section" id="menu" aria-labelledby="menu-titulo">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="menu-titulo">Nuestro menú</h2>
+          <p>Elige una categoría o mira todos los platillos.</p>
+        </div>
+
+        <!-- Filtros de categoría (demostración visual) -->
+        <ul class="chips" aria-label="Categorías de productos">
+          <li><button class="chip" type="button" data-filtro="todos" aria-pressed="true">Todos</button></li>
+          <li><button class="chip" type="button" data-filtro="hamburguesas" aria-pressed="false">Hamburguesas</button></li>
+          <li><button class="chip" type="button" data-filtro="pizzas" aria-pressed="false">Pizzas</button></li>
+          <li><button class="chip" type="button" data-filtro="asados" aria-pressed="false">Asados</button></li>
+          <li><button class="chip" type="button" data-filtro="postres" aria-pressed="false">Postres</button></li>
+          <li><button class="chip" type="button" data-filtro="bebidas" aria-pressed="false">Bebidas</button></li>
+        </ul>
+
+        <!-- Catálogo: datos de demostración visual.
+             Cada <li> conserva data-producto-id y data-categoria para que en una
+             fase futura se generen desde la tabla `productos` de la base de datos. -->
+        <ul class="product-grid">
+
+          <li data-producto-id="1" data-categoria="hamburguesas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/hamburguesa-clasica.svg" width="600" height="450" loading="lazy" alt="Hamburguesa Clásica">
+              <div class="product-card__body">
+                <p class="product-card__cat">Hamburguesas</p>
+                <h3 class="product-card__title">Hamburguesa Clásica</h3>
+                <p class="product-card__desc">Carne de res de 150 g, queso cheddar, lechuga, tomate y salsa de la casa.</p>
+                <p class="product-card__price">Q35.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="2" data-categoria="hamburguesas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/hamburguesa-doble-queso.svg" width="600" height="450" loading="lazy" alt="Hamburguesa Doble Queso">
+              <div class="product-card__body">
+                <p class="product-card__cat">Hamburguesas</p>
+                <h3 class="product-card__title">Hamburguesa Doble Queso</h3>
+                <p class="product-card__desc">Doble carne, doble cheddar, cebolla caramelizada y pan brioche.</p>
+                <p class="product-card__price">Q48.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="3" data-categoria="hamburguesas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/sandwich-pollo-crujiente.svg" width="600" height="450" loading="lazy" alt="Sándwich de Pollo Crujiente">
+              <div class="product-card__body">
+                <p class="product-card__cat">Hamburguesas</p>
+                <h3 class="product-card__title">Sándwich de Pollo Crujiente</h3>
+                <p class="product-card__desc">Pechuga empanizada, pepinillos y mayonesa ahumada en pan suave.</p>
+                <p class="product-card__price">Q42.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="4" data-categoria="pizzas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/pizza-margarita.svg" width="600" height="450" loading="lazy" alt="Pizza Margarita">
+              <div class="product-card__body">
+                <p class="product-card__cat">Pizzas</p>
+                <h3 class="product-card__title">Pizza Margarita</h3>
+                <p class="product-card__desc">Salsa de tomate, mozzarella fresca y albahaca. Tamaño mediano.</p>
+                <p class="product-card__price">Q65.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="5" data-categoria="pizzas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/pizza-pepperoni.svg" width="600" height="450" loading="lazy" alt="Pizza Pepperoni">
+              <div class="product-card__body">
+                <p class="product-card__cat">Pizzas</p>
+                <h3 class="product-card__title">Pizza Pepperoni</h3>
+                <p class="product-card__desc">Mozzarella gratinada y abundante pepperoni. Tamaño mediano.</p>
+                <p class="product-card__price">Q75.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="6" data-categoria="asados">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/costillas-bbq.svg" width="600" height="450" loading="lazy" alt="Costillas BBQ">
+              <div class="product-card__body">
+                <p class="product-card__cat">Asados</p>
+                <h3 class="product-card__title">Costillas BBQ</h3>
+                <p class="product-card__desc">Costillas de cerdo glaseadas en salsa BBQ con papas rústicas.</p>
+                <p class="product-card__price">Q95.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="7" data-categoria="asados">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/pollo-parrilla.svg" width="600" height="450" loading="lazy" alt="Pollo a la Parrilla">
+              <div class="product-card__body">
+                <p class="product-card__cat">Asados</p>
+                <h3 class="product-card__title">Pollo a la Parrilla</h3>
+                <p class="product-card__desc">Cuarto de pollo marinado con chimichurri, con guarnición del día.</p>
+                <p class="product-card__price">Q70.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="8" data-categoria="postres">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/flan-vainilla.svg" width="600" height="450" loading="lazy" alt="Flan de Vainilla">
+              <div class="product-card__body">
+                <p class="product-card__cat">Postres</p>
+                <h3 class="product-card__title">Flan de Vainilla</h3>
+                <p class="product-card__desc">Postre cremoso con caramelo casero.</p>
+                <p class="product-card__price">Q22.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="9" data-categoria="postres">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/brownie-helado.svg" width="600" height="450" loading="lazy" alt="Brownie con Helado">
+              <div class="product-card__body">
+                <p class="product-card__cat">Postres</p>
+                <h3 class="product-card__title">Brownie con Helado</h3>
+                <p class="product-card__desc">Brownie tibio de chocolate con una bola de helado de vainilla.</p>
+                <p class="product-card__price">Q30.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="10" data-categoria="bebidas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/limonada-natural.svg" width="600" height="450" loading="lazy" alt="Limonada Natural">
+              <div class="product-card__body">
+                <p class="product-card__cat">Bebidas</p>
+                <h3 class="product-card__title">Limonada Natural</h3>
+                <p class="product-card__desc">Limón recién exprimido con hielo y hierbabuena. 16 oz.</p>
+                <p class="product-card__price">Q15.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="11" data-categoria="bebidas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/horchata-fria.svg" width="600" height="450" loading="lazy" alt="Horchata Fría">
+              <div class="product-card__body">
+                <p class="product-card__cat">Bebidas</p>
+                <h3 class="product-card__title">Horchata Fría</h3>
+                <p class="product-card__desc">Bebida cremosa de arroz y canela, servida bien fría. 16 oz.</p>
+                <p class="product-card__price">Q18.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <li data-producto-id="12" data-categoria="bebidas">
+            <article class="product-card">
+              <img class="product-card__img" src="assets/images/refresco-frutas.svg" width="600" height="450" loading="lazy" alt="Refresco de Frutas">
+              <div class="product-card__body">
+                <p class="product-card__cat">Bebidas</p>
+                <h3 class="product-card__title">Refresco de Frutas</h3>
+                <p class="product-card__desc">Mezcla de frutas de temporada con hielo. 16 oz.</p>
+                <p class="product-card__price">Q12.00</p>
+                <div class="product-card__actions">
+                  <a class="btn btn--outline" href="producto.html">Ver producto</a>
+                  <button class="btn btn--primary" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+
+        <p class="empty-state" id="sin-resultados" hidden>No hay productos en esta categoría por ahora.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="contacto">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">Sazón Express</p>
+          <p>Restaurante de comida a domicilio. Cocinamos tu pedido al momento y lo llevamos hasta tu puerta.</p>
+        </div>
+        <div>
+          <h2>Contacto</h2>
+          <address>
+            <p>Teléfono: <a href="tel:+50255550123">+502 5555-0123</a></p>
+            <p>Correo: <a href="mailto:hola@sazonexpress.example">hola@sazonexpress.example</a></p>
+            <p>Guatemala</p>
+          </address>
+        </div>
+        <div>
+          <h2>Información</h2>
+          <p>Horario: todos los días, 11:00 a 21:00.</p>
+          <p>Envío: Q15.00 por pedido.</p>
+          <p>Pago: efectivo, tarjeta o transferencia.</p>
+        </div>
+      </div>
+      <p class="footer__bottom">© 2026 Sazón Express. Proyecto universitario, Fase 1: diseño UI/UX.</p>
+    </div>
+  </footer>
+</body>
+</html>

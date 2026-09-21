@@ -1,0 +1,13 @@
+# Contraseñas y configuración privada (nunca deben subirse a GitHub)
+.env
+.env.*
+
+# Dependencias (para fases futuras con Node.js)
+node_modules/
+
+# Archivos que crea el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Registros
+*.log

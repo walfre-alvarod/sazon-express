@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img" aria-label="Pizza Margarita">
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd6d9"/>
+      <stop offset="1" stop-color="#ff8f99"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#fondo)"/>
+  <circle cx="300" cy="225" r="150" fill="#ffffff" fill-opacity="0.6"/>
+  <text x="300" y="232" font-size="170" text-anchor="middle" dominant-baseline="central" font-family="'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif">🍕</text>
+</svg>

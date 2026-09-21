@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Revisa los productos de tu carrito en Sazón Express.">
+  <title>Carrito | Sazón Express</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Sazón Express, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">🍽️</span>
+        <span class="brand__name">Sazón <em>Express</em></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="menu-principal" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#menu">Menú</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="carrito.html" aria-current="page">Carrito <span class="badge" aria-label="5 productos">5</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="container">
+      <div class="page-head">
+        <h1>Tu carrito</h1>
+        <p>Revisa tu pedido antes de continuar.</p>
+      </div>
+
+      <!-- Contenido de demostración. En una fase futura la lista, las cantidades
+           y los totales se generarán a partir de la lógica del carrito. -->
+      <div class="layout-2col">
+
+        <ul class="cart-list" aria-label="Productos en el carrito">
+
+          <li>
+            <article class="cart-item" data-producto-id="1">
+              <img class="cart-item__img" src="assets/images/hamburguesa-clasica.svg" width="88" height="88" alt="Hamburguesa Clásica">
+              <div class="cart-item__info">
+                <h2 class="cart-item__name">Hamburguesa Clásica</h2>
+                <p class="cart-item__unit">Q35.00 c/u</p>
+              </div>
+              <button class="cart-item__remove" type="button" data-demo="Demostración: eliminar productos se activará en una fase futura." aria-label="Eliminar Hamburguesa Clásica del carrito">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+              </button>
+              <div class="qty">
+                <button class="qty__btn" type="button" data-qty="menos" aria-label="Disminuir cantidad de Hamburguesa Clásica">−</button>
+                <input class="qty__input" type="number" value="2" min="1" max="20" inputmode="numeric" aria-label="Cantidad de Hamburguesa Clásica">
+                <button class="qty__btn" type="button" data-qty="mas" aria-label="Aumentar cantidad de Hamburguesa Clásica">+</button>
+              </div>
+              <p class="cart-item__total">Q70.00</p>
+            </article>
+          </li>
+
+          <li>
+            <article class="cart-item" data-producto-id="5">
+              <img class="cart-item__img" src="assets/images/pizza-pepperoni.svg" width="88" height="88" alt="Pizza Pepperoni">
+              <div class="cart-item__info">
+                <h2 class="cart-item__name">Pizza Pepperoni</h2>
+                <p class="cart-item__unit">Q75.00 c/u</p>
+              </div>
+              <button class="cart-item__remove" type="button" data-demo="Demostración: eliminar productos se activará en una fase futura." aria-label="Eliminar Pizza Pepperoni del carrito">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+              </button>
+              <div class="qty">
+                <button class="qty__btn" type="button" data-qty="menos" aria-label="Disminuir cantidad de Pizza Pepperoni">−</button>
+                <input class="qty__input" type="number" value="1" min="1" max="20" inputmode="numeric" aria-label="Cantidad de Pizza Pepperoni">
+                <button class="qty__btn" type="button" data-qty="mas" aria-label="Aumentar cantidad de Pizza Pepperoni">+</button>
+              </div>
+              <p class="cart-item__total">Q75.00</p>
+            </article>
+          </li>
+
+          <li>
+            <article class="cart-item" data-producto-id="10">
+              <img class="cart-item__img" src="assets/images/limonada-natural.svg" width="88" height="88" alt="Limonada Natural">
+              <div class="cart-item__info">
+                <h2 class="cart-item__name">Limonada Natural</h2>
+                <p class="cart-item__unit">Q15.00 c/u</p>
+              </div>
+              <button class="cart-item__remove" type="button" data-demo="Demostración: eliminar productos se activará en una fase futura." aria-label="Eliminar Limonada Natural del carrito">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+              </button>
+              <div class="qty">
+                <button class="qty__btn" type="button" data-qty="menos" aria-label="Disminuir cantidad de Limonada Natural">−</button>
+                <input class="qty__input" type="number" value="2" min="1" max="20" inputmode="numeric" aria-label="Cantidad de Limonada Natural">
+                <button class="qty__btn" type="button" data-qty="mas" aria-label="Aumentar cantidad de Limonada Natural">+</button>
+              </div>
+              <p class="cart-item__total">Q30.00</p>
+            </article>
+          </li>
+
+        </ul>
+
+        <aside class="summary" aria-labelledby="resumen-titulo">
+          <h2 id="resumen-titulo">Resumen del pedido</h2>
+          <p class="summary__row"><span>Subtotal</span> <span>Q175.00</span></p>
+          <p class="summary__row"><span>Costo de envío</span> <span>Q15.00</span></p>
+          <p class="summary__row summary__row--total"><span>Total</span> <span>Q190.00</span></p>
+          <a class="btn btn--primary btn--lg btn--block" href="checkout.html">Continuar</a>
+          <a class="btn btn--outline btn--block" href="index.html#menu">Seguir comprando</a>
+          <p class="summary__note">Los totales son de ejemplo en esta fase.</p>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contacto">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">Sazón Express</p>
+          <p>Restaurante de comida a domicilio. Cocinamos tu pedido al momento y lo llevamos hasta tu puerta.</p>
+        </div>
+        <div>
+          <h2>Contacto</h2>
+          <address>
+            <p>Teléfono: <a href="tel:+50255550123">+502 5555-0123</a></p>
+            <p>Correo: <a href="mailto:hola@sazonexpress.example">hola@sazonexpress.example</a></p>
+            <p>Guatemala</p>
+          </address>
+        </div>
+        <div>
+          <h2>Información</h2>
+          <p>Horario: todos los días, 11:00 a 21:00.</p>
+          <p>Envío: Q15.00 por pedido.</p>
+          <p>Pago: efectivo, tarjeta o transferencia.</p>
+        </div>
+      </div>
+      <p class="footer__bottom">© 2026 Sazón Express. Proyecto universitario, Fase 1: diseño UI/UX.</p>
+    </div>
+  </footer>
+</body>
+</html>
