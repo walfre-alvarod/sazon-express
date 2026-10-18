@@ -1,6 +1,7 @@
 # Contraseñas y configuración privada (nunca deben subirse a GitHub)
 .env
 .env.*
+!.env.example
 
 # Dependencias (para fases futuras con Node.js)
 node_modules/

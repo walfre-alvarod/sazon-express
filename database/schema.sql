@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS detalles_pedido;
 DROP TABLE IF EXISTS pedidos;
 DROP TABLE IF EXISTS productos;
 DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS administradores;
 
 
 -- ----------------------------------------------------------------------------
@@ -58,6 +59,7 @@ CREATE TABLE productos (
   precio       DECIMAL(10,2)  NOT NULL,
   categoria    ENUM('hamburguesas', 'pizzas', 'asados', 'postres', 'bebidas') NOT NULL,
   imagen_url   VARCHAR(255)   NOT NULL,
+  activo       TINYINT(1)     NOT NULL DEFAULT 1,
 
   CONSTRAINT pk_productos        PRIMARY KEY (id),
   CONSTRAINT ck_productos_precio CHECK (precio >= 0),
@@ -75,8 +77,10 @@ CREATE TABLE pedidos (
   id          INT UNSIGNED   NOT NULL AUTO_INCREMENT,
   usuario_id  INT UNSIGNED   NOT NULL,
   fecha       DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  fecha_actualizacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   total       DECIMAL(10,2)  NOT NULL,
-  estado      ENUM('pendiente', 'en_preparacion', 'entregado') NOT NULL DEFAULT 'pendiente',
+  metodo_pago ENUM('efectivo', 'tarjeta', 'transferencia') NOT NULL DEFAULT 'efectivo',
+  estado      ENUM('pendiente', 'en_preparacion', 'en_camino', 'entregado', 'cancelado') NOT NULL DEFAULT 'pendiente',
 
   CONSTRAINT pk_pedidos         PRIMARY KEY (id),
   CONSTRAINT ck_pedidos_total   CHECK (total >= 0),
@@ -85,6 +89,25 @@ CREATE TABLE pedidos (
     ON UPDATE CASCADE
     ON DELETE RESTRICT,
   INDEX idx_pedidos_estado (estado)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+
+-- ----------------------------------------------------------------------------
+-- TABLA: administradores
+-- El usuario inicial se crea al arrancar Node con los valores de .env.
+-- ----------------------------------------------------------------------------
+CREATE TABLE administradores (
+  id              INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre          VARCHAR(100) NOT NULL,
+  correo          VARCHAR(150) NOT NULL,
+  password_hash   VARCHAR(255) NOT NULL,
+  activo          TINYINT(1) NOT NULL DEFAULT 1,
+  fecha_creacion  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+  CONSTRAINT pk_administradores PRIMARY KEY (id),
+  CONSTRAINT uq_administradores_correo UNIQUE (correo)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
@@ -124,18 +147,18 @@ CREATE TABLE detalles_pedido (
 -- DATOS DE PRUEBA (opcionales): los mismos productos del diseño visual.
 -- ----------------------------------------------------------------------------
 INSERT INTO productos (nombre, descripcion, precio, categoria, imagen_url) VALUES
-  ('Hamburguesa Clásica',         'Carne de res de 150 g, queso cheddar, lechuga, tomate y salsa de la casa.',  35.00, 'hamburguesas', 'assets/images/hamburguesa-clasica.svg'),
-  ('Hamburguesa Doble Queso',     'Doble carne, doble cheddar, cebolla caramelizada y pan brioche.',            48.00, 'hamburguesas', 'assets/images/hamburguesa-doble-queso.svg'),
-  ('Sándwich de Pollo Crujiente', 'Pechuga empanizada, pepinillos y mayonesa ahumada en pan suave.',            42.00, 'hamburguesas', 'assets/images/sandwich-pollo-crujiente.svg'),
-  ('Pizza Margarita',             'Salsa de tomate, mozzarella fresca y albahaca. Tamaño mediano.',             65.00, 'pizzas',       'assets/images/pizza-margarita.svg'),
-  ('Pizza Pepperoni',             'Mozzarella gratinada y abundante pepperoni. Tamaño mediano.',                75.00, 'pizzas',       'assets/images/pizza-pepperoni.svg'),
-  ('Costillas BBQ',               'Costillas de cerdo glaseadas en salsa BBQ con papas rústicas.',              95.00, 'asados',       'assets/images/costillas-bbq.svg'),
-  ('Pollo a la Parrilla',         'Cuarto de pollo marinado con chimichurri, con guarnición del día.',          70.00, 'asados',       'assets/images/pollo-parrilla.svg'),
-  ('Flan de Vainilla',            'Postre cremoso con caramelo casero.',                                        22.00, 'postres',      'assets/images/flan-vainilla.svg'),
-  ('Brownie con Helado',          'Brownie tibio de chocolate con una bola de helado de vainilla.',             30.00, 'postres',      'assets/images/brownie-helado.svg'),
-  ('Limonada Natural',            'Limón recién exprimido con hielo y hierbabuena. 16 oz.',                     15.00, 'bebidas',      'assets/images/limonada-natural.svg'),
-  ('Horchata Fría',               'Bebida cremosa de arroz y canela, servida bien fría. 16 oz.',                18.00, 'bebidas',      'assets/images/horchata-fria.svg'),
-  ('Refresco de Frutas',          'Mezcla de frutas de temporada con hielo. 16 oz.',                            12.00, 'bebidas',      'assets/images/refresco-frutas.svg');
+  ('Hamburguesa Clásica',         'Carne de res de 150 g, queso cheddar, lechuga, tomate y salsa de la casa.',  35.00, 'hamburguesas', 'https://images.pexels.com/photos/6045440/pexels-photo-6045440.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Hamburguesa Doble Queso',     'Doble carne, doble cheddar, cebolla caramelizada y pan brioche.',            48.00, 'hamburguesas', 'https://images.pexels.com/photos/20264649/pexels-photo-20264649.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Sándwich de Pollo Crujiente', 'Pechuga empanizada, pepinillos y mayonesa ahumada en pan suave.',            42.00, 'hamburguesas', 'https://images.pexels.com/photos/7962694/pexels-photo-7962694.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Pizza Margarita',             'Salsa de tomate, mozzarella fresca y albahaca. Tamaño mediano.',             65.00, 'pizzas',       'https://images.pexels.com/photos/14590497/pexels-photo-14590497.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Pizza Pepperoni',             'Mozzarella gratinada y abundante pepperoni. Tamaño mediano.',                75.00, 'pizzas',       'https://images.pexels.com/photos/4109083/pexels-photo-4109083.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Costillas BBQ',               'Costillas de cerdo glaseadas en salsa BBQ con papas rústicas.',              95.00, 'asados',       'https://images.pexels.com/photos/32538759/pexels-photo-32538759.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Pollo a la Parrilla',         'Cuarto de pollo marinado con chimichurri, con guarnición del día.',          70.00, 'asados',       'https://images.pexels.com/photos/9397764/pexels-photo-9397764.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Flan de Vainilla',            'Postre cremoso con caramelo casero.',                                        22.00, 'postres',      'https://images.pexels.com/photos/7462565/pexels-photo-7462565.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Brownie con Helado',          'Brownie tibio de chocolate con una bola de helado de vainilla.',             30.00, 'postres',      'https://images.pexels.com/photos/28377753/pexels-photo-28377753.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Limonada Natural',            'Limón recién exprimido con hielo y hierbabuena. 16 oz.',                     15.00, 'bebidas',      'https://images.pexels.com/photos/5472299/pexels-photo-5472299.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Horchata Fría',               'Bebida cremosa de arroz y canela, servida bien fría. 16 oz.',                18.00, 'bebidas',      'https://images.pexels.com/photos/34567561/pexels-photo-34567561.jpeg?auto=compress&cs=tinysrgb&w=1200'),
+  ('Refresco de Frutas',          'Mezcla de frutas de temporada con hielo. 16 oz.',                            12.00, 'bebidas',      'https://images.pexels.com/photos/6209634/pexels-photo-6209634.jpeg?auto=compress&cs=tinysrgb&w=1200');
 
 
 -- ----------------------------------------------------------------------------

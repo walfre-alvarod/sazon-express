@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Consulta el estado de tu pedido de Sazón Express.">
+  <title>Seguir pedido | Sazón Express</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/seguimiento.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Sazón Express, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">SE</span>
+        <span class="brand__name">Sazón <em>Express</em></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="menu-principal" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#menu">Menú</a></li>
+          <li><a href="seguimiento.html" aria-current="page">Seguir pedido</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="carrito.html">Carrito <span class="badge" aria-label="0 productos">0</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="tracking-page">
+    <div class="container">
+      <header class="tracking-header">
+        <p class="section-kicker">Seguimiento en tiempo real</p>
+        <h1>¿Cómo va tu pedido?</h1>
+        <p>Ingresa el número que recibiste al confirmar y el mismo correo usado en la compra.</p>
+      </header>
+
+      <form class="tracking-form" id="form-seguimiento">
+        <label for="pedido-id">Número de pedido
+          <input id="pedido-id" name="pedido_id" inputmode="numeric" placeholder="Ej. 123" required>
+        </label>
+        <label for="pedido-correo">Correo electrónico
+          <input id="pedido-correo" name="correo" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required>
+        </label>
+        <button class="btn btn--primary btn--lg" type="submit">Consultar estado</button>
+      </form>
+      <p class="tracking-error" id="tracking-error" role="alert" hidden></p>
+      <section class="tracking-result" id="tracking-result" aria-live="polite" hidden></section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contacto">
+    <div class="container">
+      <div class="footer__grid">
+        <div><p class="footer__brand">Sazón Express</p><p>Comida preparada al momento y entregada hasta tu puerta.</p></div>
+        <div><h2>Contacto</h2><p><a href="tel:+50255550123">+502 5555-0123</a></p><p><a href="mailto:hola@sazonexpress.example">hola@sazonexpress.example</a></p></div>
+        <div><h2>Información</h2><p>Todos los días, 11:00 a 21:00.</p><p>Envío Q15.00 por pedido.</p></div>
+      </div>
+      <p class="footer__bottom">© 2026 Sazón Express. Sistema web de pedidos a domicilio.</p>
+    </div>
+  </footer>
+</body>
+</html>

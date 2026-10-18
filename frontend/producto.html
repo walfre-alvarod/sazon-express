@@ -26,6 +26,7 @@
         <ul class="nav__list">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="index.html#menu" aria-current="page">Menú</a></li>
+          <li><a href="seguimiento.html">Seguir pedido</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
           <li><a href="carrito.html">Carrito <span class="badge" aria-label="5 productos">5</span></a></li>
         </ul>
@@ -37,10 +38,9 @@
     <div class="container">
       <a class="btn btn--outline back-btn" href="index.html#menu"><span aria-hidden="true">←</span> Regresar al menú</a>
 
-      <!-- Producto de demostración. En una fase futura se cargará desde la
-           tabla `productos` según el id recibido en la URL. -->
+      <!-- JavaScript carga el producto desde la API según el id de la URL. -->
       <article class="product-detail" data-producto-id="1">
-        <img class="product-detail__img" src="assets/images/hamburguesa-clasica.svg" width="600" height="450" alt="Hamburguesa Clásica">
+        <img class="product-detail__img" src="https://images.pexels.com/photos/6045440/pexels-photo-6045440.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" width="600" height="450" alt="Hamburguesa Clásica">
 
         <div class="product-detail__info">
           <p class="product-detail__cat">Hamburguesas</p>
@@ -65,7 +65,7 @@
               <input class="qty__input" id="cantidad" type="number" value="1" min="1" max="20" inputmode="numeric" aria-label="Cantidad">
               <button class="qty__btn" type="button" data-qty="mas" aria-label="Aumentar cantidad">+</button>
             </div>
-            <button class="btn btn--primary btn--lg" type="button" data-demo="Demostración: el carrito se activará en una fase futura.">Agregar al carrito</button>
+            <button class="btn btn--primary btn--lg" type="button" data-agregar-carrito="1">Agregar al carrito</button>
           </div>
         </div>
       </article>
@@ -95,7 +95,7 @@
           <p>Pago: efectivo, tarjeta o transferencia.</p>
         </div>
       </div>
-      <p class="footer__bottom">© 2026 Sazón Express. Proyecto universitario, Fase 1: diseño UI/UX.</p>
+      <p class="footer__bottom">© 2026 Sazón Express. Sistema web de pedidos a domicilio. <a href="admin.html">Administración</a></p>
     </div>
   </footer>
 </body>

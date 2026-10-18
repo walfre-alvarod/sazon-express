@@ -26,6 +26,7 @@
         <ul class="nav__list">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="index.html#menu">Menú</a></li>
+          <li><a href="seguimiento.html">Seguir pedido</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
           <li><a href="carrito.html">Carrito <span class="badge" aria-label="5 productos">5</span></a></li>
         </ul>
@@ -36,8 +37,7 @@
   <main id="contenido">
     <div class="container">
 
-      <!-- Pantalla de ejemplo. En una fase futura el número de pedido, el tiempo
-           estimado y el resumen vendrán del pedido guardado en la base de datos. -->
+      <!-- JavaScript completa esta pantalla con el pedido guardado en la base de datos. -->
       <section class="confirm" aria-labelledby="confirmado-titulo">
         <div class="confirm__icon" aria-hidden="true">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
@@ -62,7 +62,7 @@
 
           <ul class="mini-list">
             <li class="mini-item">
-              <img src="assets/images/hamburguesa-clasica.svg" width="52" height="52" alt="">
+              <img src="https://images.pexels.com/photos/6045440/pexels-photo-6045440.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" width="52" height="52" alt="">
               <div>
                 <p class="mini-item__name">Hamburguesa Clásica</p>
                 <p class="mini-item__qty">Cantidad: 2</p>
@@ -70,7 +70,7 @@
               <p class="mini-item__price">Q70.00</p>
             </li>
             <li class="mini-item">
-              <img src="assets/images/pizza-pepperoni.svg" width="52" height="52" alt="">
+              <img src="https://images.pexels.com/photos/4109083/pexels-photo-4109083.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" width="52" height="52" alt="">
               <div>
                 <p class="mini-item__name">Pizza Pepperoni</p>
                 <p class="mini-item__qty">Cantidad: 1</p>
@@ -78,7 +78,7 @@
               <p class="mini-item__price">Q75.00</p>
             </li>
             <li class="mini-item">
-              <img src="assets/images/limonada-natural.svg" width="52" height="52" alt="">
+              <img src="https://images.pexels.com/photos/5472299/pexels-photo-5472299.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" width="52" height="52" alt="">
               <div>
                 <p class="mini-item__name">Limonada Natural</p>
                 <p class="mini-item__qty">Cantidad: 2</p>
@@ -92,7 +92,10 @@
           <p class="summary__row summary__row--total"><span>Total</span> <span>Q190.00</span></p>
         </div>
 
-        <a class="btn btn--primary btn--lg" href="index.html">Regresar al inicio</a>
+        <div class="confirm__actions">
+          <a class="btn btn--primary btn--lg" id="btn-seguimiento" href="seguimiento.html">Seguir mi pedido</a>
+          <a class="btn btn--outline btn--lg" href="index.html">Regresar al inicio</a>
+        </div>
       </section>
 
     </div>
@@ -120,7 +123,7 @@
           <p>Pago: efectivo, tarjeta o transferencia.</p>
         </div>
       </div>
-      <p class="footer__bottom">© 2026 Sazón Express. Proyecto universitario, Fase 1: diseño UI/UX.</p>
+      <p class="footer__bottom">© 2026 Sazón Express. Sistema web de pedidos a domicilio. <a href="admin.html">Administración</a></p>
     </div>
   </footer>
 </body>

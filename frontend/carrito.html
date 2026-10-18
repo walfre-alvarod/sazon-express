@@ -26,6 +26,7 @@
         <ul class="nav__list">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="index.html#menu">Menú</a></li>
+          <li><a href="seguimiento.html">Seguir pedido</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
           <li><a href="carrito.html" aria-current="page">Carrito <span class="badge" aria-label="5 productos">5</span></a></li>
         </ul>
@@ -40,20 +41,19 @@
         <p>Revisa tu pedido antes de continuar.</p>
       </div>
 
-      <!-- Contenido de demostración. En una fase futura la lista, las cantidades
-           y los totales se generarán a partir de la lógica del carrito. -->
+      <!-- JavaScript genera la lista, cantidades y totales desde localStorage. -->
       <div class="layout-2col">
 
         <ul class="cart-list" aria-label="Productos en el carrito">
 
           <li>
             <article class="cart-item" data-producto-id="1">
-              <img class="cart-item__img" src="assets/images/hamburguesa-clasica.svg" width="88" height="88" alt="Hamburguesa Clásica">
+              <img class="cart-item__img" src="https://images.pexels.com/photos/6045440/pexels-photo-6045440.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" width="88" height="88" alt="Hamburguesa Clásica">
               <div class="cart-item__info">
                 <h2 class="cart-item__name">Hamburguesa Clásica</h2>
                 <p class="cart-item__unit">Q35.00 c/u</p>
               </div>
-              <button class="cart-item__remove" type="button" data-demo="Demostración: eliminar productos se activará en una fase futura." aria-label="Eliminar Hamburguesa Clásica del carrito">
+              <button class="cart-item__remove" type="button" data-eliminar-carrito="1" aria-label="Eliminar Hamburguesa Clásica del carrito">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
               </button>
               <div class="qty">
@@ -67,12 +67,12 @@
 
           <li>
             <article class="cart-item" data-producto-id="5">
-              <img class="cart-item__img" src="assets/images/pizza-pepperoni.svg" width="88" height="88" alt="Pizza Pepperoni">
+              <img class="cart-item__img" src="https://images.pexels.com/photos/4109083/pexels-photo-4109083.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" width="88" height="88" alt="Pizza Pepperoni">
               <div class="cart-item__info">
                 <h2 class="cart-item__name">Pizza Pepperoni</h2>
                 <p class="cart-item__unit">Q75.00 c/u</p>
               </div>
-              <button class="cart-item__remove" type="button" data-demo="Demostración: eliminar productos se activará en una fase futura." aria-label="Eliminar Pizza Pepperoni del carrito">
+              <button class="cart-item__remove" type="button" data-eliminar-carrito="5" aria-label="Eliminar Pizza Pepperoni del carrito">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
               </button>
               <div class="qty">
@@ -86,12 +86,12 @@
 
           <li>
             <article class="cart-item" data-producto-id="10">
-              <img class="cart-item__img" src="assets/images/limonada-natural.svg" width="88" height="88" alt="Limonada Natural">
+              <img class="cart-item__img" src="https://images.pexels.com/photos/5472299/pexels-photo-5472299.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" width="88" height="88" alt="Limonada Natural">
               <div class="cart-item__info">
                 <h2 class="cart-item__name">Limonada Natural</h2>
                 <p class="cart-item__unit">Q15.00 c/u</p>
               </div>
-              <button class="cart-item__remove" type="button" data-demo="Demostración: eliminar productos se activará en una fase futura." aria-label="Eliminar Limonada Natural del carrito">
+              <button class="cart-item__remove" type="button" data-eliminar-carrito="10" aria-label="Eliminar Limonada Natural del carrito">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
               </button>
               <div class="qty">
@@ -141,7 +141,7 @@
           <p>Pago: efectivo, tarjeta o transferencia.</p>
         </div>
       </div>
-      <p class="footer__bottom">© 2026 Sazón Express. Proyecto universitario, Fase 1: diseño UI/UX.</p>
+      <p class="footer__bottom">© 2026 Sazón Express. Sistema web de pedidos a domicilio. <a href="admin.html">Administración</a></p>
     </div>
   </footer>
 </body>

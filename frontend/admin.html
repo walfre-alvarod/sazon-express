@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Panel administrativo de Sazón Express.">
+  <title>Administración | Sazón Express</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="js/admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <main class="admin-login" id="login-view">
+    <section class="login-panel" aria-labelledby="login-title">
+      <a class="admin-brand" href="index.html" aria-label="Volver a Sazón Express">
+        <span class="admin-brand__mark" aria-hidden="true">SE</span>
+        <span>Sazón <strong>Express</strong></span>
+      </a>
+      <div class="login-panel__intro">
+        <p class="eyebrow">Administración</p>
+        <h1 id="login-title">Inicia sesión</h1>
+        <p>Gestiona el menú y los pedidos del restaurante.</p>
+      </div>
+      <form id="form-login" class="admin-form">
+        <label>
+          Correo electrónico
+          <input name="correo" type="email" autocomplete="username" required autofocus>
+        </label>
+        <label>
+          Contraseña
+          <input name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <p class="form-error" id="login-error" role="alert" hidden></p>
+        <button class="admin-btn admin-btn--primary admin-btn--block" type="submit">Entrar al panel</button>
+      </form>
+      <a class="back-link" href="index.html">Volver al sitio</a>
+    </section>
+  </main>
+
+  <div class="admin-shell" id="admin-app" hidden>
+    <aside class="admin-sidebar">
+      <a class="admin-brand admin-brand--light" href="index.html">
+        <span class="admin-brand__mark" aria-hidden="true">SE</span>
+        <span>Sazón <strong>Express</strong></span>
+      </a>
+      <nav class="admin-nav" aria-label="Navegación administrativa">
+        <button class="admin-nav__item is-active" type="button" data-view="resumen">
+          <span aria-hidden="true">▦</span> Resumen
+        </button>
+        <button class="admin-nav__item" type="button" data-view="productos">
+          <span aria-hidden="true">□</span> Platillos
+        </button>
+        <button class="admin-nav__item" type="button" data-view="pedidos">
+          <span aria-hidden="true">≡</span> Pedidos
+        </button>
+      </nav>
+      <div class="admin-sidebar__footer">
+        <p id="admin-name">Administrador</p>
+        <button class="admin-nav__item" id="btn-logout" type="button">Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <div class="admin-workspace">
+      <header class="admin-topbar">
+        <button class="menu-button" id="btn-menu" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        <div>
+          <p class="eyebrow">Panel de control</p>
+          <h1 id="view-title">Resumen</h1>
+        </div>
+        <a class="admin-btn admin-btn--outline" href="index.html" target="_blank" rel="noopener">Ver sitio</a>
+      </header>
+
+      <main class="admin-content">
+        <section class="admin-view" id="view-resumen" data-admin-view="resumen">
+          <div class="metrics" id="metrics" aria-live="polite">
+            <p class="loading-row">Cargando resumen...</p>
+          </div>
+          <section class="admin-section">
+            <div class="section-heading">
+              <div>
+                <h2>Pedidos recientes</h2>
+                <p>Actividad más reciente del restaurante.</p>
+              </div>
+              <button class="admin-btn admin-btn--outline" type="button" data-go-view="pedidos">Ver todos</button>
+            </div>
+            <div class="table-wrap">
+              <table class="admin-table">
+                <thead><tr><th>Pedido</th><th>Cliente</th><th>Fecha</th><th>Total</th><th>Estado</th><th></th></tr></thead>
+                <tbody id="recent-orders"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-productos" data-admin-view="productos" hidden>
+          <div class="view-toolbar">
+            <div class="search-box">
+              <label class="sr-only" for="buscar-productos">Buscar platillos</label>
+              <input id="buscar-productos" type="search" placeholder="Buscar platillo...">
+            </div>
+            <button class="admin-btn admin-btn--primary" id="btn-nuevo-producto" type="button">+ Nuevo platillo</button>
+          </div>
+          <section class="admin-section">
+            <div class="table-wrap">
+              <table class="admin-table admin-table--products">
+                <thead><tr><th>Platillo</th><th>Categoría</th><th>Precio</th><th>Disponibilidad</th><th>Acciones</th></tr></thead>
+                <tbody id="products-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-pedidos" data-admin-view="pedidos" hidden>
+          <div class="view-toolbar view-toolbar--filters">
+            <div class="search-box">
+              <label class="sr-only" for="buscar-pedidos">Buscar pedidos</label>
+              <input id="buscar-pedidos" type="search" placeholder="Pedido, cliente o correo...">
+            </div>
+            <label class="filter-field">
+              <span>Estado</span>
+              <select id="filtro-estado">
+                <option value="todos">Todos</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="en_preparacion">En preparación</option>
+                <option value="en_camino">En camino</option>
+                <option value="entregado">Entregado</option>
+                <option value="cancelado">Cancelado</option>
+              </select>
+            </label>
+            <button class="admin-btn admin-btn--outline" id="btn-refrescar-pedidos" type="button">Actualizar</button>
+          </div>
+          <section class="admin-section">
+            <div class="table-wrap">
+              <table class="admin-table">
+                <thead><tr><th>Pedido</th><th>Cliente</th><th>Fecha</th><th>Artículos</th><th>Total</th><th>Estado</th><th></th></tr></thead>
+                <tbody id="orders-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="admin-dialog" id="product-dialog">
+    <form class="dialog-panel" id="form-producto">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">Menú</p><h2 id="product-dialog-title">Nuevo platillo</h2></div>
+        <button class="icon-button" type="button" data-close-dialog="product-dialog" aria-label="Cerrar">×</button>
+      </div>
+      <input name="id" type="hidden">
+      <div class="product-form-layout">
+        <div class="admin-form">
+          <label>Nombre<input name="nombre" maxlength="100" required></label>
+          <label>Descripción<textarea name="descripcion" maxlength="255" rows="4" required></textarea></label>
+          <div class="form-columns">
+            <label>Precio (Q)<input name="precio" type="number" min="0" step="0.01" required></label>
+            <label>Categoría
+              <select name="categoria" required>
+                <option value="hamburguesas">Hamburguesas</option>
+                <option value="pizzas">Pizzas</option>
+                <option value="asados">Asados</option>
+                <option value="postres">Postres</option>
+                <option value="bebidas">Bebidas</option>
+              </select>
+            </label>
+          </div>
+          <label>URL de la imagen<input name="imagen_url" type="url" maxlength="255" placeholder="https://..." required></label>
+        </div>
+        <div class="image-preview">
+          <img id="product-preview" alt="Vista previa del platillo" hidden>
+          <p id="product-preview-empty">La vista previa aparecerá aquí.</p>
+        </div>
+      </div>
+      <p class="form-error" id="product-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button class="admin-btn admin-btn--outline" type="button" data-close-dialog="product-dialog">Cancelar</button>
+        <button class="admin-btn admin-btn--primary" type="submit">Guardar platillo</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="admin-dialog" id="order-dialog">
+    <section class="dialog-panel dialog-panel--order">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">Pedido</p><h2 id="order-dialog-title">Detalle del pedido</h2></div>
+        <button class="icon-button" type="button" data-close-dialog="order-dialog" aria-label="Cerrar">×</button>
+      </div>
+      <div id="order-detail"></div>
+    </section>
+  </dialog>
+
+  <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
