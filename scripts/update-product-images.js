@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const pool = require("../backend/src/config/database");
+const pool = require("../src/config/database");
 
 const imagenes = [
   [1, "https://images.pexels.com/photos/6045440/pexels-photo-6045440.jpeg?auto=compress&cs=tinysrgb&w=1200"],

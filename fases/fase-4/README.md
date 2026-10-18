@@ -20,7 +20,7 @@ Comprobar el funcionamiento conjunto del cliente, servidor y base de datos, y co
 - [`test/validators.test.js`](../../test/validators.test.js)
 - [`scripts/integration-check.js`](../../scripts/integration-check.js)
 - [`scripts/update-product-images.js`](../../scripts/update-product-images.js)
-- [`database/update_product_images.sql`](../../database/update_product_images.sql)
+- [`scripts/database/update_product_images.sql`](../../scripts/database/update_product_images.sql)
 
 ## Comandos de verificacion
 

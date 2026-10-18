@@ -17,13 +17,13 @@ Conectar el sistema con MySQL y exponer los datos mediante un servidor Node.js c
 
 ## Archivos relacionados
 
-- [`backend/src/server.js`](../../backend/src/server.js)
-- [`backend/src/app.js`](../../backend/src/app.js)
-- [`backend/src/config/`](../../backend/src/config/)
-- [`backend/src/controllers/`](../../backend/src/controllers/)
-- [`backend/src/routes/`](../../backend/src/routes/)
-- [`backend/src/middlewares/`](../../backend/src/middlewares/)
-- [`database/migrate_to_final.sql`](../../database/migrate_to_final.sql)
+- [`server.js`](../../server.js)
+- [`app.js`](../../app.js)
+- [`src/config/`](../../src/config/)
+- [`src/controllers/`](../../src/controllers/)
+- [`src/routes/`](../../src/routes/)
+- [`src/middlewares/`](../../src/middlewares/)
+- [`scripts/database/migrate_to_final.sql`](../../scripts/database/migrate_to_final.sql)
 - [`package.json`](../../package.json)
 - [`.env.example`](../../.env.example)
 

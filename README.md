@@ -14,6 +14,22 @@ El desarrollo y sus entregables están documentados por separado en [`fases/`](f
 
 El código ejecutable se mantiene en la raíz del repositorio para evitar duplicados y conservar correctas todas las rutas del sistema.
 
+## Estructura del proyecto
+
+```text
+sazon-express/
+|-- fases/             Evidencia y entregables por fase
+|-- public/            HTML, CSS, JavaScript e imágenes del cliente
+|-- scripts/           Comprobaciones y utilidades de base de datos
+|-- src/               Configuración, rutas, controladores y middlewares
+|-- test/              Pruebas automáticas
+|-- app.js             Configuración de Express
+|-- server.js          Inicio del servidor
+|-- schema.sql         Creación de la base de datos
+|-- package.json       Dependencias y comandos
+`-- README.md          Documentación general
+```
+
 ## Funciones incluidas
 
 ### Cliente
@@ -40,7 +56,7 @@ El código ejecutable se mantiene en la raíz del repositorio para evitar duplic
 
 - Node.js 18 o superior.
 - XAMPP con MySQL/MariaDB.
-- La base `pedidos_db` creada con `database/schema.sql`.
+- La base `pedidos_db` creada con `schema.sql`.
 
 ## Configuración
 
@@ -64,7 +80,7 @@ Si tu `.env` todavía no tiene las últimas cuatro variables, el sistema usará 
 ## Primera ejecución
 
 1. Enciende MySQL en XAMPP.
-2. Si aún no existe la base, importa `database/schema.sql` desde phpMyAdmin.
+2. Si aún no existe la base, importa `schema.sql` desde phpMyAdmin.
 3. Instala las dependencias:
 
 ```powershell

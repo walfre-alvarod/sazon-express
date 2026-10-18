@@ -4,7 +4,7 @@ const {
   validarUsuario,
   validarItems,
   validarProducto
-} = require("../backend/src/utils/validators");
+} = require("../src/utils/validators");
 
 test("valida y normaliza un cliente correcto", () => {
   const resultado = validarUsuario({

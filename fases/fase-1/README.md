@@ -15,12 +15,12 @@ Definir la identidad visual, la navegacion principal y el modelo relacional del 
 
 ## Archivos relacionados
 
-- [`frontend/index.html`](../../frontend/index.html)
-- [`frontend/producto.html`](../../frontend/producto.html)
-- [`frontend/carrito.html`](../../frontend/carrito.html)
-- [`frontend/checkout.html`](../../frontend/checkout.html)
-- [`frontend/pedido-confirmado.html`](../../frontend/pedido-confirmado.html)
-- [`frontend/css/styles.css`](../../frontend/css/styles.css)
-- [`database/schema.sql`](../../database/schema.sql)
+- [`public/index.html`](../../public/index.html)
+- [`public/producto.html`](../../public/producto.html)
+- [`public/carrito.html`](../../public/carrito.html)
+- [`public/checkout.html`](../../public/checkout.html)
+- [`public/pedido-confirmado.html`](../../public/pedido-confirmado.html)
+- [`public/css/styles.css`](../../public/css/styles.css)
+- [`schema.sql`](../../schema.sql)
 
 El primer avance tambien se conserva en el historial de Git con el commit `3bdc30a`.

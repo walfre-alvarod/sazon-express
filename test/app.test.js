@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const app = require("../backend/src/app");
+const app = require("../app");
 
 let server;
 let baseUrl;

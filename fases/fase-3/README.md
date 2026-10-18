@@ -17,12 +17,12 @@ Convertir las vistas estaticas en una tienda funcional conectada a la API REST.
 
 ## Archivos relacionados
 
-- [`frontend/js/app.js`](../../frontend/js/app.js)
-- [`frontend/js/seguimiento.js`](../../frontend/js/seguimiento.js)
-- [`frontend/js/admin.js`](../../frontend/js/admin.js)
-- [`frontend/seguimiento.html`](../../frontend/seguimiento.html)
-- [`frontend/admin.html`](../../frontend/admin.html)
-- [`frontend/css/admin.css`](../../frontend/css/admin.css)
+- [`public/js/app.js`](../../public/js/app.js)
+- [`public/js/seguimiento.js`](../../public/js/seguimiento.js)
+- [`public/js/admin.js`](../../public/js/admin.js)
+- [`public/seguimiento.html`](../../public/seguimiento.html)
+- [`public/admin.html`](../../public/admin.html)
+- [`public/css/admin.css`](../../public/css/admin.css)
 
 ## Flujos implementados
 
