@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const app = require("../app");
+const app = require("../src/app");
 
 let server;
 let baseUrl;

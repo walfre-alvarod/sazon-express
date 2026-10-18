@@ -21,6 +21,6 @@ Definir la identidad visual, la navegacion principal y el modelo relacional del 
 - [`public/checkout.html`](../../public/checkout.html)
 - [`public/pedido-confirmado.html`](../../public/pedido-confirmado.html)
 - [`public/css/styles.css`](../../public/css/styles.css)
-- [`schema.sql`](../../schema.sql)
+- [`database/schema.sql`](../../database/schema.sql)
 
 El primer avance tambien se conserva en el historial de Git con el commit `3bdc30a`.

@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const app = require("./app");
-const pool = require("./src/config/database");
-const ejecutarMigraciones = require("./src/config/migrate");
+const pool = require("./config/database");
+const ejecutarMigraciones = require("./config/migrate");
 
 const PORT = Number(process.env.PORT || 3000);
 

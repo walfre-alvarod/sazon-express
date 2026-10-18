@@ -13,8 +13,9 @@ Esta carpeta organiza la evidencia del desarrollo de Sazon Express segun el cron
 ## Proyecto ejecutable
 
 - [`public/`](../public/): tienda, carrito, checkout, seguimiento y administracion.
-- [`src/`](../src/): API REST, controladores, rutas y acceso a MySQL.
-- [`schema.sql`](../schema.sql): esquema completo y datos iniciales.
-- [`scripts/database/`](../scripts/database/): migraciones y actualizaciones de datos.
+- [`src/`](../src/): servidor, API REST, controladores, rutas y acceso a MySQL.
+- [`database/schema.sql`](../database/schema.sql): esquema completo y datos iniciales.
+- [`database/migrations/`](../database/migrations/): actualizaciones de estructura.
+- [`database/scripts/`](../database/scripts/): utilidades SQL para datos.
 - [`test/`](../test/): pruebas automaticas.
 - [`README.md`](../README.md): instalacion, ejecucion y recorrido de prueba.
