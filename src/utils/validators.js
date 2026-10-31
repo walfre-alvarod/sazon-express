@@ -29,6 +29,14 @@ function validarUsuario(usuario) {
   return { datos };
 }
 
+function validarRegistro(usuario) {
+  const resultado = validarUsuario(usuario);
+  if (resultado.error) return resultado;
+  const password = String((usuario && usuario.password) || "");
+  if (password.length < 8) return { error: "La contrasena debe tener al menos 8 caracteres." };
+  return { datos: { ...resultado.datos, password } };
+}
+
 function validarItems(items) {
   if (!Array.isArray(items) || items.length === 0) {
     return { error: "El pedido debe incluir al menos un producto." };
@@ -36,7 +44,8 @@ function validarItems(items) {
 
   const productos = items.map((item) => ({
     producto_id: Number(item.producto_id),
-    cantidad: Number(item.cantidad)
+    cantidad: Number(item.cantidad),
+    personalizacion: normalizarTexto(item.personalizacion).slice(0, 500)
   }));
 
   const invalido = productos.some(
@@ -81,6 +90,7 @@ module.exports = {
   normalizarTexto,
   esEnteroPositivo,
   validarUsuario,
+  validarRegistro,
   validarItems,
   validarProducto
 };

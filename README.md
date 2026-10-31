@@ -36,7 +36,9 @@ sazon-express/
 - Filtros por categoría y detalle de cada platillo.
 - Carrito persistente con `localStorage`.
 - Cambio de cantidades, eliminación y cálculo de totales.
-- Checkout con datos de entrega y método de pago.
+- Cuenta de cliente con registro, inicio de sesión y contraseñas cifradas.
+- Direcciones de entrega guardadas y selector de dirección en checkout.
+- Menú agrupado por categoría y pizzas configurables por tamaño e ingredientes a retirar.
 - Creación transaccional del pedido y pantalla de confirmación.
 - Seguimiento por número de pedido y correo con actualización automática.
 
@@ -135,6 +137,11 @@ Rutas públicas:
 - `GET /api/productos/:id`
 - `POST /api/pedidos`
 - `GET /api/pedidos/seguimiento/:id?correo=...`
+- `POST /api/usuarios/registro`
+- `POST /api/usuarios/login`
+- `GET /api/usuarios/perfil`
+- `POST /api/usuarios/direcciones`
+- `DELETE /api/usuarios/direcciones/:id`
 
 Rutas administrativas protegidas:
 

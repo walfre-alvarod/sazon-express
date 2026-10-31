@@ -1,9 +1,10 @@
 const express = require("express");
 const { crearPedido, seguirPedido } = require("../controllers/pedidosController");
+const authCliente = require("../middlewares/authCliente");
 
 const router = express.Router();
 
 router.get("/seguimiento/:id", seguirPedido);
-router.post("/", crearPedido);
+router.post("/", authCliente, crearPedido);
 
 module.exports = router;

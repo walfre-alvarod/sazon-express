@@ -23,6 +23,7 @@ USE pedidos_db;
 -- Se eliminan primero las tablas hijas para respetar las claves foráneas.
 DROP TABLE IF EXISTS detalles_pedido;
 DROP TABLE IF EXISTS pedidos;
+DROP TABLE IF EXISTS direcciones;
 DROP TABLE IF EXISTS productos;
 DROP TABLE IF EXISTS usuarios;
 DROP TABLE IF EXISTS administradores;
@@ -38,10 +39,26 @@ CREATE TABLE usuarios (
   correo          VARCHAR(150)  NOT NULL,
   telefono        VARCHAR(20)   NOT NULL,
   direccion       VARCHAR(255)  NOT NULL,
+  password_hash   VARCHAR(255)  NOT NULL,
   fecha_registro  DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
   CONSTRAINT pk_usuarios        PRIMARY KEY (id),
   CONSTRAINT uq_usuarios_correo UNIQUE (correo)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+CREATE TABLE direcciones (
+  id              INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  usuario_id      INT UNSIGNED NOT NULL,
+  etiqueta        VARCHAR(60) NOT NULL,
+  direccion       VARCHAR(255) NOT NULL,
+  predeterminada  TINYINT(1) NOT NULL DEFAULT 0,
+  fecha_creacion  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT pk_direcciones PRIMARY KEY (id),
+  CONSTRAINT fk_direcciones_usuario FOREIGN KEY (usuario_id)
+    REFERENCES usuarios (id) ON UPDATE CASCADE ON DELETE CASCADE,
+  INDEX idx_direcciones_usuario (usuario_id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
@@ -80,6 +97,7 @@ CREATE TABLE pedidos (
   fecha_actualizacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   total       DECIMAL(10,2)  NOT NULL,
   metodo_pago ENUM('efectivo', 'tarjeta', 'transferencia') NOT NULL DEFAULT 'efectivo',
+  direccion_entrega VARCHAR(255) NOT NULL,
   estado      ENUM('pendiente', 'en_preparacion', 'en_camino', 'entregado', 'cancelado') NOT NULL DEFAULT 'pendiente',
 
   CONSTRAINT pk_pedidos         PRIMARY KEY (id),
@@ -124,12 +142,13 @@ CREATE TABLE detalles_pedido (
   producto_id      INT UNSIGNED   NOT NULL,
   cantidad         INT UNSIGNED   NOT NULL,
   precio_unitario  DECIMAL(10,2)  NOT NULL,
+  personalizacion  VARCHAR(500) NOT NULL DEFAULT '',
 
   CONSTRAINT pk_detalles_pedido          PRIMARY KEY (id),
   CONSTRAINT ck_detalles_cantidad        CHECK (cantidad > 0),
   CONSTRAINT ck_detalles_precio_unitario CHECK (precio_unitario >= 0),
   -- Un mismo producto aparece una sola vez por pedido (se acumula en cantidad).
-  CONSTRAINT uq_detalles_pedido_producto UNIQUE (pedido_id, producto_id),
+  CONSTRAINT uq_detalles_pedido_producto UNIQUE (pedido_id, producto_id, personalizacion),
   CONSTRAINT fk_detalles_pedido
     FOREIGN KEY (pedido_id) REFERENCES pedidos (id)
     ON UPDATE CASCADE

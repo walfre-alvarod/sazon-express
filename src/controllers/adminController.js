@@ -198,7 +198,7 @@ async function obtenerPedidoAdmin(req, res, next) {
 
     const [pedidos] = await pool.execute(
       `SELECT p.id, p.fecha, p.total, p.estado, p.metodo_pago,
-              u.nombre AS cliente, u.correo, u.telefono, u.direccion
+              u.nombre AS cliente, u.correo, u.telefono, p.direccion_entrega AS direccion
        FROM pedidos p
        INNER JOIN usuarios u ON u.id = p.usuario_id
        WHERE p.id = :id`,
@@ -208,7 +208,7 @@ async function obtenerPedidoAdmin(req, res, next) {
 
     const [detalles] = await pool.execute(
       `SELECT d.producto_id, pr.nombre, pr.imagen_url, d.cantidad,
-              d.precio_unitario, d.cantidad * d.precio_unitario AS subtotal
+              d.precio_unitario, d.personalizacion, d.cantidad * d.precio_unitario AS subtotal
        FROM detalles_pedido d
        INNER JOIN productos pr ON pr.id = d.producto_id
        WHERE d.pedido_id = :id

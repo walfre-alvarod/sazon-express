@@ -329,7 +329,7 @@
     }).join("");
     var items = pedido.detalles.map(function (item) {
       return '<div class="order-item"><img src="' + escapar(item.imagen_url) + '" alt=""><div><p><strong>' + escapar(item.nombre) +
-        '</strong></p><small>' + item.cantidad + ' × ' + moneda(item.precio_unitario) + '</small></div><strong>' + moneda(item.subtotal) + '</strong></div>';
+        '</strong></p><small>' + item.cantidad + ' × ' + moneda(item.precio_unitario) + (item.personalizacion ? '<br>' + escapar(item.personalizacion) : '') + '</small></div><strong>' + moneda(item.subtotal) + '</strong></div>';
     }).join("");
     return '<div class="order-grid"><div class="order-block"><h3>Cliente</h3><p><strong>' + escapar(pedido.cliente) +
       '</strong></p><p>' + escapar(pedido.correo) + '</p><p>' + escapar(pedido.telefono) + '</p><p>' + escapar(pedido.direccion) +

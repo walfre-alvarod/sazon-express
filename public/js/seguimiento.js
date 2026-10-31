@@ -89,7 +89,7 @@
 
     var items = pedido.detalles.map(function (item) {
       return '<li class="mini-item"><img src="' + escapar(item.imagen_url) + '" width="52" height="52" alt=""><div><p class="mini-item__name">' +
-        escapar(item.nombre) + '</p><p class="mini-item__qty">Cantidad: ' + item.cantidad + '</p></div><p class="mini-item__price">' + moneda(item.subtotal) + '</p></li>';
+        escapar(item.nombre) + '</p><p class="mini-item__qty">Cantidad: ' + item.cantidad + '</p>' + (item.personalizacion ? '<p class="mini-item__qty">' + escapar(item.personalizacion) + '</p>' : '') + '</div><p class="mini-item__price">' + moneda(item.subtotal) + '</p></li>';
     }).join("");
 
     resultado.innerHTML =
